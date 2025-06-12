@@ -1,0 +1,62 @@
+.footer {
+  border: 4px solid var(--grey);
+  border-bottom: 0px;
+  border-radius: 16px;
+  margin: 400px 100px 0px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer h1 {
+  font-family: "Poppins";
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+
+  color: var(--gold);
+  font-size: clamp(4rem, 10vw, 6rem);
+}
+
+.contact-footer {
+  color: var(--white);
+  padding: 20px;
+  font-size: 1.5rem;
+  border-radius: 16px;
+  background-color: var(--coral);
+}
+
+.socials {
+  display: flex;
+}
+
+.socials svg {
+  width: 100px;
+  fill: var(--white);
+  transition: all 0.3s ease;
+}
+
+.socials .linkedin:hover {
+  fill: var(--dark-blue);
+}
+
+.socials .github:hover {
+  fill: black;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    margin: 20px 20px 0px;
+  }
+
+  .socials .linkedin {
+    fill: var(--dark-blue);
+  }
+
+  .socials .github {
+    fill: black;
+  }
+}

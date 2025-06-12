@@ -1,33 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react"
+import Navbar from "./components/Navbar/Navbar.jsx"
+import Hero from "./components/Hero/Hero.jsx"
+import Experience from "./components/Experience/Experience.jsx"
+import Techstack from "./components/Techstack/Techstack.jsx"
+import Projects from "./components/Projects/Projects.jsx"
+import Footer from "./components/Footer/Footer.jsx"
+import "./App.css"
 
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const target = entry.target
+
+        if (entry.isIntersecting) {
+          if (target.classList.contains("hidden")) {
+            target.classList.add("show")
+          }
+          if (target.classList.contains("hidden-fade")) {
+            target.classList.add("show-fade")
+          }
+        } else {
+          target.classList.remove("show", "show-fade")
+        }
+      })
+    })
+
+    const hiddenElements = document.querySelectorAll(".hidden, .hidden-fade")
+    hiddenElements.forEach((el) => observer.observe(el))
+  }, [])
+
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="portfolio">
+        <Navbar />
+        <Hero />
+        <Experience />
+        <Techstack />
+        <Projects />
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
